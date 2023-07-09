@@ -9,10 +9,10 @@ import { lazy, Suspense } from "react";
 
 function App() {
   return (
-    <>
+    <div className=''>
       <Header />
       <Outlet />
-    </>
+    </div>
   );
 }
 const About = lazy(() => import('./components/About'));

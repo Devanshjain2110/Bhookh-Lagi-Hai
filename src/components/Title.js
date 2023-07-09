@@ -1,13 +1,13 @@
 import Logo from "../items/logo.png"
 
 const Title = () => (
-    <a  href="/">
+    <div className="">
       <img 
-      className="logo w-40"
+      className="w-32"
       alt="logo"
       src={Logo}
       />
-    </a>
+    </div>
 )
 
 

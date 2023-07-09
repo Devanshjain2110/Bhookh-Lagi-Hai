@@ -7,29 +7,33 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className=" flex">
+    <div className="flex justify-between bg-gray-400 shadow-xl">
       <Title />
-      <div >
-        <ul className="flex ">
-          <li> {onlineStatus ? "🟢" : "🔴"}</li>
-          <Link to="/">
+      <div className="flex">
+        <ul className="flex items-center">
+          <li className="px-4">Online Status : {onlineStatus ? "🟢" : "🔴"}</li>
+          <Link className="px-4" to="/">
             <li>Home</li>
           </Link>
-          <Link to="/about">
+          <Link className="px-4" to="/about">
             <li>About us</li>
           </Link>
-          <Link to="/contact">
+          <Link className="px-4" to="/contact">
             <li>Contact</li>
           </Link>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
+         
         </ul>
+      
+       
       </div>
-
-      {isLogin ? (
+      <button className="">{isLogin ? (
         <button onClick={() => setIsLogin(false)}>Logout</button>
       ) : (
         <button onClick={() => setIsLogin(true)}>Login</button>
-      )}
+      )}</button>
+
+     
     </div>
   );
 };

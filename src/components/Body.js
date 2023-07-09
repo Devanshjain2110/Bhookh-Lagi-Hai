@@ -32,16 +32,16 @@ export default function Body() {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="ml-24">
         <input
           type="text"
-          className="search-input"
+          className="border border-solid border-black"
           value={searchInput}
           placeholder="Search"
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button
-          className="search-btn"
+          className="px-4 py-2 rounded-full m-4 bg-blue-400"
           onClick={() => {
             const data = filterData(searchInput, restaurants);
             setFilteredRestaurants(data);
@@ -49,10 +49,20 @@ export default function Body() {
         >
           Search
         </button>
+        <button className="px-4 py-2 bg-gray-100 rounded-full"
+        onClick={() =>{
+          const filtered = restaurants.filter(
+            (res) => res.data.avgRating > 4
+          );
+          setFilteredRestaurants(filtered)
+        }}  >
+          Top rated restaurants
+        </button>
       </div>
-      <div className="Restaurant-list">
+      <div className="flex flex-wrap mx-20">
         {filteredRestaurants.map((restaurant) => {
           return (
+
             <Link
               key={restaurant.data.id}
               to={"/restaurant/" + restaurant.data.id}
