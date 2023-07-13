@@ -5,7 +5,6 @@ export const RestaurantCard = ({
   lastMileTravelString,
   costForTwo,
   deliveryTime,
-  promoted
 }) => {
   return (
     <div className="m-4 p-4 w-[300px] bg-slate-200 rounded-lg hover:bg-rose-400">

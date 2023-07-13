@@ -7,7 +7,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex justify-between bg-gray-400 shadow-xl">
+    <div className="flex justify-between bg-rose-950 shadow-xl">
       <Title />
       <div className="flex">
         <ul className="flex items-center">

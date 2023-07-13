@@ -42,6 +42,7 @@ export default function Body() {
           placeholder="Search"
           onChange={(e) => setSearchInput(e.target.value)}
         />
+        
         <button
           className="px-4 py-2 rounded-full m-4 bg-blue-400"
           onClick={() => {

@@ -1,35 +1,29 @@
 import { useParams } from "react-router-dom";
-import { IMG_URL } from "../items/Constant";
 import { Shimmer } from "./Shimmer";
-import useRestaurantMenu from "./CustomHook/useRestaurantMenu";
+import {useRestaurantMenu} from "./CustomHook/useRestaurantMenu";
+import { RestaurantCategory } from "./RestaurantCategory";
 
 export const RestaurantMenu = () => {
   const { id } = useParams();
-  let { restaurantMenu, menu } = useRestaurantMenu(id);
+  let { restaurantMenu, menu, category } = useRestaurantMenu(id);
+  console.log(category)
 
   if (restaurantMenu === null) return <Shimmer />;
 
   return (
-    <div>
-      <h1>Restaurant id : {id}</h1>
-      <h2>{restaurantMenu.name}</h2>
-      <img src={IMG_URL + restaurantMenu.cloudinaryImageId} alt="" />
-      <h3>{restaurantMenu.areaName}</h3>
-      <h3>{restaurantMenu.costForTwo}</h3>
-      <h3>{restaurantMenu.avgRating}</h3>
-      <h3>{restaurantMenu.slugs?.city}</h3>
-
-      <div>
-        <h1>Menu</h1>
-        <ul>
-          {Object.values(menu).map((item) => (
-            <li key={item.card.info.id}>
-              {item.card.info.name} - Rs{" "}
-              {item.card.info.price / 100 || item.card.info.defaultPrice / 100}.
-            </li>
-          ))}
-        </ul>
+    <div className="text-center flex mx-96 px-10">
+      <div className="">
+      <h2 className="font-bold my-6 text-2xl">{restaurantMenu.name}</h2>
+      <h3 className="font-bold text-lg">
+        {"Average Price - "}
+        Rs {restaurantMenu.costForTwo / 100} { " for Two"}
+      </h3>
+      <h3 className="font-bold text-lg">{restaurantMenu.avgRating} ★</h3>
+    
+      {Object.values(category).map((category) => (
+        <RestaurantCategory key={category.card.card.title} data={category.card.card}/>
+      ))} 
       </div>
-    </div>
+          </div> 
   );
 };
