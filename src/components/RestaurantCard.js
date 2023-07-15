@@ -7,7 +7,7 @@ export const RestaurantCard = ({
   deliveryTime,
 }) => {
   return (
-    <div className="m-4 p-4 w-[300px] bg-slate-200 rounded-lg hover:bg-rose-400">
+    <div className="m-4 min-h-[380px] p-4 w-[300px] bg-slate-200 rounded-lg hover:bg-rose-400">
       <img
         className="rounded-lg"
         src={

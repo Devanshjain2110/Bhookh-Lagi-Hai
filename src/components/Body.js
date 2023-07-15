@@ -53,7 +53,7 @@ export default function Body() {
           Search
         </button>
         <button
-          className="px-4 py-2 bg-gray-100 rounded-full"
+          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
           onClick={() => {
             const filtered = restaurants.filter(
               (res) => res.data.avgRating > 4
@@ -62,6 +62,40 @@ export default function Body() {
           }}
         >
           Top rated restaurants
+        </button>
+        <button
+          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          onClick={() => {
+            let sortedList = [...restaurants]
+            sortedList.sort(
+              (a,b) => b.data.costForTwo - a.data.costForTwo
+            );
+            setFilteredRestaurants(sortedList);
+          }}
+        >
+          Cost : High To Low
+        </button>
+        <button
+          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          onClick={() => {
+            let sortedList = [...restaurants]
+            sortedList.sort(
+              (a,b) => a.data.costForTwo - b.data.costForTwo
+            );
+            setFilteredRestaurants(sortedList);
+          }}
+        >
+          Cost : High To Low
+        </button>
+        <button
+          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          onClick={() => {
+            let sortedList = [...restaurants];
+            sortedList.sort((a, b) => a.data.deliveryTime - b.data.deliveryTime);
+            setFilteredRestaurants(sortedList);
+          }}
+        >
+          Delivery Time
         </button>
       </div>
       <div className="flex flex-wrap mx-20">

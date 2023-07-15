@@ -6,7 +6,7 @@ import { RestaurantCategory } from "./RestaurantCategory";
 export const RestaurantMenu = () => {
   const { id } = useParams();
   let { restaurantMenu, menu, category } = useRestaurantMenu(id);
-  console.log(category)
+
 
   if (restaurantMenu === null) return <Shimmer />;
 

@@ -1,21 +1,23 @@
 import Header from "./components/Header";
-
 import Body from "./components/Body";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import { Contact } from "./components/Contact";
 import { RestaurantMenu } from "./components/RestaurantMenu";
 import { lazy, Suspense } from "react";
+import { Provider } from "react-redux";
+import { store } from "./components/utils/Store";
+import { Cart } from "./components/Cart";
 
 function App() {
   return (
-    <div className=''>
+    <Provider store={store}>
       <Header />
       <Outlet />
-    </div>
+    </Provider>
   );
 }
-const About = lazy(() => import('./components/About'));
+const About = lazy(() => import("./components/About"));
 export const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +43,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

@@ -2,9 +2,14 @@ import { useState } from "react";
 import Title from "./Title";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./CustomHook/useOnlineStatus";
+import { useSelector } from "react-redux";
+import { store } from "./utils/Store";
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
   const onlineStatus = useOnlineStatus();
+
+  const cartItems = useSelector(store => store.cart.items);
+
 
   return (
     <div className="flex justify-between bg-rose-950 shadow-xl">
@@ -21,19 +26,18 @@ const Header = () => {
           <Link className="px-4" to="/contact">
             <li>Contact</li>
           </Link>
-          <li className="px-4">Cart</li>
-         
+          <Link className="px-4" to="/cart">
+            <li>Cart - {cartItems.length}</li>
+          </Link>
         </ul>
-      
-       
       </div>
-      <button className="">{isLogin ? (
-        <button onClick={() => setIsLogin(false)}>Logout</button>
-      ) : (
-        <button onClick={() => setIsLogin(true)}>Login</button>
-      )}</button>
-
-     
+      <button className="">
+        {isLogin ? (
+          <button onClick={() => setIsLogin(false)}>Logout</button>
+        ) : (
+          <button onClick={() => setIsLogin(true)}>Login</button>
+        )}
+      </button>
     </div>
   );
 };

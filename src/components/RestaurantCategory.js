@@ -5,7 +5,7 @@ export const RestaurantCategory = ({ data }) => {
   const handleClick = (e) =>{
     e.currentTarget.classList.toggle('collapse-close');
   }
-  console.log(data);
+  
   return (
     <>
       <div className="collapse collapse-arrow bg-base-200 max-w-2xl collapse-close" onClick={handleClick}>
