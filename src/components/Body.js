@@ -33,10 +33,11 @@ export default function Body() {
   return restaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <>
+    <div className="bg-[#fff]" >
       <div className="ml-24">
         <input
           type="text"
+          data-testid = "search-btn"
           className="border border-solid border-black"
           value={searchInput}
           placeholder="Search"
@@ -98,7 +99,7 @@ export default function Body() {
           Delivery Time
         </button>
       </div>
-      <div className="flex flex-wrap mx-20">
+      <div className="flex flex-wrap mx-20" data-testid="shimmer">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
@@ -114,6 +115,6 @@ export default function Body() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

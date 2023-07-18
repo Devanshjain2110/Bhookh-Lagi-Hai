@@ -12,11 +12,11 @@ const Header = () => {
 
 
   return (
-    <div className="flex justify-between bg-rose-950 shadow-xl">
+    <div className="flex justify-between bg-white shadow-xl">
       <Title />
       <div className="flex">
         <ul className="flex items-center">
-          <li className="px-4">Online Status : {onlineStatus ? "🟢" : "🔴"}</li>
+          <li data-testid="onlinestat" className="px-4">Online Status : {onlineStatus ? "🟢" : "🔴"}</li>
           <Link className="px-4" to="/">
             <li>Home</li>
           </Link>
@@ -26,8 +26,8 @@ const Header = () => {
           <Link className="px-4" to="/contact">
             <li>Contact</li>
           </Link>
-          <Link className="px-4" to="/cart">
-            <li>Cart - {cartItems.length}</li>
+          <Link className="px-4" to="/cart" >
+            <li data-testid="cart">Cart - {cartItems.length}</li>
           </Link>
         </ul>
       </div>

@@ -3,6 +3,7 @@ import Logo from "../items/logo.png"
 const Title = () => (
     <div className="">
       <img 
+      data-testid="logo"
       className="w-32"
       alt="logo"
       src={Logo}
