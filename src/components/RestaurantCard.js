@@ -5,7 +5,8 @@ export const RestaurantCard = ({
   lastMileTravelString,
   costForTwo,
   deliveryTime,
-}) => {
+  sla
+}, ) => {
   return (
     <div className="m-4 min-h-[400px] p-4 w-[300px] bg-slate-200 rounded-lg hover:bg-rose-400">
       <img
@@ -18,9 +19,9 @@ export const RestaurantCard = ({
       />
       <h2 className="font-bold py-3 text-lg ">{name}</h2>
       <h3>{cuisines.join(", ")}</h3>
-      <h4>{lastMileTravelString} minutes</h4>
-      <h4>Cost for two people : ₹{costForTwo / 100}</h4>
-      <h4> Delivery TIme : {deliveryTime} minutes</h4>
+      <h4>{sla.lastMileTravelString} </h4>
+      <h4>Cost : {costForTwo} </h4>
+      <h4> Delivery TIme : {sla.deliveryTime} minutes</h4>
     </div>
   );
 };

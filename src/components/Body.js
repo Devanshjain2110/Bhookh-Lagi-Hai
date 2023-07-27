@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function filterData(searchInput, restaurants) {
   return restaurants.filter((restaurant) =>
-    restaurant.data.name?.toLowerCase()?.includes(searchInput.toLowerCase())
+    restaurant.info.name?.toLowerCase()?.includes(searchInput.toLowerCase())
   );
 }
 
@@ -26,8 +26,8 @@ export default function Body() {
     );
     const json = await data.json();
     console.log(json);
-    setRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   }
 
   return restaurants?.length === 0 ? (
@@ -57,7 +57,7 @@ export default function Body() {
           className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
           onClick={() => {
             const filtered = restaurants.filter(
-              (res) => res.data.avgRating > 4
+              (res) => res.info.avgRating > 4
             );
             setFilteredRestaurants(filtered);
           }}
@@ -69,30 +69,43 @@ export default function Body() {
           onClick={() => {
             let sortedList = [...restaurants]
             sortedList.sort(
-              (a,b) => b.data.costForTwo - a.data.costForTwo
+              (a,b) => a.info.sla.lastMileTravel - b.info.sla.lastMileTravel
             );
             setFilteredRestaurants(sortedList);
           }}
         >
-          Cost : High To Low
+          Nearest Restaurants
         </button>
         <button
           className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
           onClick={() => {
             let sortedList = [...restaurants]
             sortedList.sort(
-              (a,b) => a.data.costForTwo - b.data.costForTwo
+              (a,b) => Number(a.info.costForTwo.substr(1,3)) - Number(b.info.costForTwo.substr(1,3))
             );
             setFilteredRestaurants(sortedList);
           }}
         >
-          Cost : High To Low
+          Cost : Low To High
         </button>
         <button
           className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
           onClick={() => {
+            let sortedList = [...restaurants]
+            sortedList.sort(
+              (a,b) => Number(b.info.costForTwo.substr(1,3)) - Number(a.info.costForTwo.substr(1,3))
+            );
+            setFilteredRestaurants(sortedList);
+          }}
+        >
+          Cost : High to Low
+        </button>
+        
+        <button
+          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          onClick={() => {
             let sortedList = [...restaurants];
-            sortedList.sort((a, b) => a.data.deliveryTime - b.data.deliveryTime);
+            sortedList.sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime);
             setFilteredRestaurants(sortedList);
           }}
         >
@@ -100,17 +113,20 @@ export default function Body() {
         </button>
       </div>
       <div className="flex flex-wrap mx-20" data-testid="shimmer">
-        {filteredRestaurants.map((restaurant) => {
+        {filteredRestaurants?.map((restaurant) => {
           return (
+    
             <Link
-              key={restaurant.data.id}
-              to={"/restaurant/" + restaurant.data.id}
+              key={restaurant.info.id}
+              to={"/restaurant/" + restaurant.info.id}
             >
-              {restaurant.data.promoted ? (
-                <PromotedRestaurantCard {...restaurant.data} />
-              ) : (
-                <RestaurantCard {...restaurant.data} />
-              )}
+              {restaurant.info.promoted ? (
+                <PromotedRestaurantCard {...restaurant.info} />
+              ) :  
+              (
+                <RestaurantCard {...restaurant.info} />
+              )
+            }
             </Link>
           );
         })}
