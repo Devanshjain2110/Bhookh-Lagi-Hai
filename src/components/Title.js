@@ -1,4 +1,4 @@
-import Logo from "../items/logo.png"
+import menu_url from '../items/Constant'
 
 const Title = () => (
     <div className="">
@@ -6,9 +6,11 @@ const Title = () => (
       data-testid="logo"
       className="w-32"
       alt="logo"
-      src={Logo}
+    
       />
     </div>
+
+    
 )
 
 

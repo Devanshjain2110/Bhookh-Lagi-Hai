@@ -3,6 +3,7 @@ import { Shimmer } from "./Shimmer";
 import { RestaurantCard, WithPromotedLabel } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 
+
 function filterData(searchInput, restaurants) {
   return restaurants.filter((restaurant) =>
     restaurant.info.name?.toLowerCase()?.includes(searchInput.toLowerCase())
@@ -33,7 +34,7 @@ export default function Body() {
   return restaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="bg-[#fff]" >
+    <div className="bg-orange-500" >
       <div className="ml-24">
         <input
           type="text"
@@ -51,10 +52,11 @@ export default function Body() {
             setFilteredRestaurants(data);
           }}
         >
-          Search
+          Search this
+          
         </button>
         <button
-          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          className="px-4 py-2 mx-2 bg-[#313335] rounded-full"
           onClick={() => {
             const filtered = restaurants.filter(
               (res) => res.info.avgRating > 4

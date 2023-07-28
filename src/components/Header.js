@@ -12,7 +12,7 @@ const Header = () => {
 
 
   return (
-    <div className="flex justify-between bg-white shadow-xl">
+    <div className="flex justify-between bg-orange-500 shadow-xl text-white text-xl">
       <Title />
       <div className="flex">
         <ul className="flex items-center">

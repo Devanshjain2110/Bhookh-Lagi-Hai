@@ -8,7 +8,7 @@ export const RestaurantCard = ({
   sla
 }, ) => {
   return (
-    <div className="m-4 min-h-[400px] p-4 w-[300px] bg-slate-200 rounded-lg hover:bg-rose-400">
+    <div className="m-4 min-h-[400px] p-4 w-[300px] bg-[#313335] rounded-lg hover:bg-[#84807B] hover:shadow-2xl hover:shadow-slate-600">
       <img
         className="rounded-lg"
         src={
