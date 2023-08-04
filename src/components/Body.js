@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import { Shimmer } from "./Shimmer";
 import { RestaurantCard, WithPromotedLabel } from "./RestaurantCard";
 import { Link } from "react-router-dom";
+import { QualityContainer } from "./QualityContainer";
+import { scroller } from "react-scroll";
+import { Footer } from "./Footer";
+import { GoSearch } from "react-icons/go";
 
 
 function filterData(searchInput, restaurants) {
@@ -14,9 +18,14 @@ export default function Body() {
   const [searchInput, setSearchInput] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
-
   const PromotedRestaurantCard = WithPromotedLabel(RestaurantCard);
-
+  const handleScroll = () =>{
+    scroller.scrollTo('res-list',{
+      smooth:true,
+      duration: 560,
+      offset : -170
+    })
+  }
   useEffect(() => {
     getRestaurants();
   }, []);
@@ -26,37 +35,56 @@ export default function Body() {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.022505&lng=72.5713621&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
-    setRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    async function checkJsonData(jsonData) {
+      let max = 0;
+      for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+
+    // updated state variable restaurants with Swiggy API data
+        // initialize checkData for Swiggy Restaurant data
+        let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+        // if checkData is not undefined then return it
+        if (checkData !== undefined && max <= checkData.length) {
+          max = checkData;
+        }
+      }
+      return max;
+    }
+
+    const resData = await checkJsonData(json);
+    setRestaurants(resData);
+    setFilteredRestaurants(resData);
   }
+
+  
 
   return restaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="bg-orange-500" >
-      <div className="ml-24">
+    <>
+    <QualityContainer onClicker={handleScroll}/>
+    <div className="bg-white text-black" >
+      <div className="ml-24  mr-[118] border-b-2 border-b-slate-300">
         <input
           type="text"
           data-testid = "search-btn"
-          className="border border-solid border-black"
+          className="border border-solid border-gray-400 py-2 pl-3 pr-16 rounded-2xl rounded-r-none bg-white"
           value={searchInput}
-          placeholder="Search"
+          placeholder="Search Restaurants"
           onChange={(e) => setSearchInput(e.target.value)}
         />
         
         <button
-          className="px-4 py-2 rounded-full m-4 bg-blue-400"
+          className="px-3 -ml-1 py-3  rounded-full rounded-l-none my-4 text-white bg-orange-950 border border-l-gray-200"
           onClick={() => {
             const data = filterData(searchInput, restaurants);
             setFilteredRestaurants(data);
           }}
         >
-          Search this
-          
+      <GoSearch />
         </button>
         <button
-          className="px-4 py-2 mx-2 bg-[#313335] rounded-full"
+          className="px-4 py-2 mr-2 ml-[78px] bg-white rounded-full hover:bg-orange-500 hover:text-white "
           onClick={() => {
             const filtered = restaurants.filter(
               (res) => res.info.avgRating > 4
@@ -67,7 +95,7 @@ export default function Body() {
           Top rated restaurants
         </button>
         <button
-          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          className="px-4 py-2 mx-2 bg-white rounded-full hover:bg-orange-500 hover:text-white"
           onClick={() => {
             let sortedList = [...restaurants]
             sortedList.sort(
@@ -79,7 +107,7 @@ export default function Body() {
           Nearest Restaurants
         </button>
         <button
-          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          className="px-4 py-2 mx-2 bg-white rounded-full hover:bg-orange-500 hover:text-white"
           onClick={() => {
             let sortedList = [...restaurants]
             sortedList.sort(
@@ -91,7 +119,7 @@ export default function Body() {
           Cost : Low To High
         </button>
         <button
-          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          className="px-4 py-2 mx-2 bg-white rounded-full hover:bg-orange-500 hover:text-white"
           onClick={() => {
             let sortedList = [...restaurants]
             sortedList.sort(
@@ -104,7 +132,7 @@ export default function Body() {
         </button>
         
         <button
-          className="px-4 py-2 mx-2 bg-gray-100 rounded-full"
+          className="px-4 py-2 mx-2 bg-white rounded-full hover:bg-orange-500 hover:text-white"
           onClick={() => {
             let sortedList = [...restaurants];
             sortedList.sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime);
@@ -114,7 +142,7 @@ export default function Body() {
           Delivery Time
         </button>
       </div>
-      <div className="flex flex-wrap mx-20" data-testid="shimmer">
+      <div id="res-list" className="flex flex-wrap mx-20 pb-3" data-testid="shimmer">
         {filteredRestaurants?.map((restaurant) => {
           return (
     
@@ -134,5 +162,7 @@ export default function Body() {
         })}
       </div>
     </div>
+  
+    </>
   );
 }

@@ -1,3 +1,7 @@
+import { BsFillStarFill } from "react-icons/bs";
+import { FaWalking } from "react-icons/fa";
+
+
 export const RestaurantCard = ({
   name,
   cuisines,
@@ -5,10 +9,12 @@ export const RestaurantCard = ({
   lastMileTravelString,
   costForTwo,
   deliveryTime,
-  sla
+  sla,
+  avgRating
+
 }, ) => {
   return (
-    <div className="m-4 min-h-[400px] p-4 w-[300px] bg-[#313335] rounded-lg hover:bg-[#84807B] hover:shadow-2xl hover:shadow-slate-600">
+    <div className="m-4 min-h-[370px] p-4 w-[300px] shadow-lg text-red-800 bg-white rounded-lg hover:shadow-orange-600 transition ease-in-out delay-50 hover:scale-105 duration-200 ">
       <img
         className="rounded-lg"
         src={
@@ -17,11 +23,26 @@ export const RestaurantCard = ({
         }
         alt="logoRes"
       />
-      <h2 className="font-bold py-3 text-lg ">{name}</h2>
-      <h3>{cuisines.join(", ")}</h3>
-      <h4>{sla.lastMileTravelString} </h4>
-      <h4>Cost : {costForTwo} </h4>
-      <h4> Delivery TIme : {sla.deliveryTime} minutes</h4>
+      <h2 className="font-bold pt-2 pb-1 text-xl ">{name}</h2>
+      <h3 className="mb-4 tracking-wide truncate">{cuisines.join(", ")}</h3>
+      <div className="flex justify-between mb-2">
+      <h4
+          style={
+            avgRating < 4
+              ? { backgroundColor: "#f7084e" }
+              : { backgroundColor: "#00ad1d" }
+          }
+          className="p-2 mb-4 text-white font-bold rounded-md flex items-center gap-2"
+        > 
+        
+          {avgRating ? avgRating : "--"}
+          <BsFillStarFill  />
+        </h4>
+      <h4 className="mt-2 ml-5 font-bold"><FaWalking className="ml-3"/>{sla.lastMileTravelString} </h4>
+      <h4 className="mt-2  font-bold"> {costForTwo} </h4>
+
+      </div>
+      <span className="pt-3 text-base font-bold"> {sla.deliveryTime} </span><span className="pt-3 text-base">minutes till delivery</span>
     </div>
   );
 };

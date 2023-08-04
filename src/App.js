@@ -8,12 +8,14 @@ import { lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import { store } from "./components/utils/Store";
 import { Cart } from "./components/Cart";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
     <Provider store={store}>
       <Header />
       <Outlet />
+      <Footer />
     </Provider>
   );
 }
