@@ -35,7 +35,7 @@ export const Footer = () => {
           </button>
         </div>
       </div>
-      <div className="flex list-none mt-14">
+      <div className="flex list-none mt-16">
       <Link className="px-5 hover:text-orange-500 h-10 pt-[6]
           " to="/">
             <li>Home</li>
@@ -45,8 +45,8 @@ export const Footer = () => {
             <li>About us</li>
           </Link>
           <Link className="px-5 hover:text-orange-500 h-10 pt-[6]
-          " to="/contact">
-            <li>Contact</li>
+          " to="/faq">
+            <li>FAQ</li>
           </Link>
           <Link className="px-5 hover:text-orange-500 h-10 pt-[6]
           " to="/cart" >
@@ -67,12 +67,12 @@ export const Footer = () => {
     </div>
     <div className="bg-zinc-900 h-15 flex text-zinc-500 justify-center max-w-full">
       <div className="flex  ">
-        <div className="flex mr-60 border-b-2 border-b-slate-600">
+        <div className="flex mr-60 border-b-2 border-b-slate-600 hover:text-white hover:border-b-white">
       <p className="mt-[5]">BHOOKH LAGI HAI? </p>
         <BiCopyright className="h-9 ml-1 mr-1"/>  
         <p className="mt-[5]"> 2023 </p>
         </div>
-        <div className="mt-[5] border-b-2 border-b-slate-600">
+        <div className="mt-[5] border-b-2 border-b-slate-600 hover:text-white hover:border-b-white">
         devanshjain2904@gmail.com
         </div>
         </div>

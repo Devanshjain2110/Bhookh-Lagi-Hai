@@ -4,7 +4,6 @@ import { RestaurantCard, WithPromotedLabel } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import { QualityContainer } from "./QualityContainer";
 import { scroller } from "react-scroll";
-import { Footer } from "./Footer";
 import { GoSearch } from "react-icons/go";
 
 

@@ -1,38 +1,53 @@
 import { useDispatch } from "react-redux";
 import { addItem } from "./utils/cartSlice";
-
+import { BsFillCartPlusFill } from "react-icons/bs";
+import veg from '../items/veg.png'
+import nonveg from '../items/non-veg.png'
 
 export const MenuItem = ({ items }) => {
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+    console.log(item);
+  };
 
-  const dispatch = useDispatch()
-  const handleAddItem = (item) =>{
-    dispatch(addItem(item ))
-    console.log(item)
-  }
   return (
-    <div>
+   
+    <div className="grid grid-flow-row grid-cols-3 gap-10 mt-7">
       {items.map((item) => (
-        <div key={item.card.info.id} className="p-2 m-2 border-b-2 text-left flex justify-between">
-            
-          <div className="w-9/12">
-            <span>{item.card.info.name}</span>
-            <span>
-              {item.card.info.name}   - ₹ 
-              {item.card.info.price
+        <div
+          key={item.card.info.id}
+          className=" m-2 border-b-2 rounded-3xl w-[380] min-h-[460] bg-gray-100 text-left flex-col justify-between hover:scale-105 duration-200 hover:shadow-[0px_1px_20px_4px_rgba(0,0,0,0.56)]"
+        >
+          <div className=""> 
+            <img
+              src={
+                "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+                item.card.info.imageId
+              }
+              alt=""
+              className="h-60 rounded-3xl "
+            />
+          </div>
+          <div className="px-4 pt-4 ">
+            <span className="font-bold text-xl line-clamp-1 flex"> <span className="">{item?.card?.info.isVeg ? <img className="h-8 mr-2"src={veg}></img> : <img className="h-8 mr-2" src={nonveg}></img>}</span> <span className="line-clamp-1">{item?.card?.info.name}</span> </span>
+           
+            <p className="text-base my-3 line-clamp-3 min-h-[72]">{item.card.info.description}</p>
+          
+          </div>
+          <div className="pt-8 flex justify-between ">
+          <span className="ml-4 font-semibold text-2xl">
+              ₹ - {item.card.info.price
                 ? item.card.info.price / 100
                 : item.card.info.defaultPrice / 100}
             </span>
-            <p className="text-xs my-2">{item.card.info.description}</p>
-          </div>
-          
-          <div  className="w-3/12">
-            <div className="absolute">
-                <button className="p-2 bg-stone-700 text-white" onClick={() => handleAddItem(item.card.info)}>
-                    Add+
-                </button>
+              <button
+                className="py-3 px-6 -mt-2 bg-red-600 text-white mr-6 rounded-xl"
+                onClick={() => handleAddItem(item.card.info)}
+              >
+                <BsFillCartPlusFill  className=""/>
+              </button>
             </div>
-              <img src={ "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + item.card.info.imageId} alt="" />
-              </div>
         </div>
       ))}
     </div>

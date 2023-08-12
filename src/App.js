@@ -2,13 +2,14 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import Error from "./components/Error";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import { Contact } from "./components/Contact";
+import { FAQ} from "./components/FAQ";
 import { RestaurantMenu } from "./components/RestaurantMenu";
 import { lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import { store } from "./components/utils/Store";
 import { Cart } from "./components/Cart";
 import { Footer } from "./components/Footer";
+import { Login } from "./components/Login";
 
 function App() {
   return (
@@ -39,8 +40,8 @@ export const appRouter = createBrowserRouter([
         ),
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/faq",
+        element: <FAQ />,
       },
       {
         path: "/restaurant/:id",
@@ -49,6 +50,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

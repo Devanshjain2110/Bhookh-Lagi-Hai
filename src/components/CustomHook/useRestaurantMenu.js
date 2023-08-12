@@ -8,6 +8,7 @@ export const useRestaurantMenu = (id) => {
   const [category, setCategory] = useState({});
   useEffect(() => {
     getRestaurantInfo();
+   
   }, []);
 
   async function getRestaurantInfo() {
@@ -15,8 +16,8 @@ export const useRestaurantMenu = (id) => {
     if (!data.ok)
       throw new Error("Something went wrong with fetching restaurants");
     const json = await data.json();
-    console.log(json)
-    setRestaurantMenu(json.data?.cards[0]?.card?.card?.info);
+   
+    setRestaurantMenu(json.data?.cards[0]?.card?.card?.info);   
     setMenu(
       json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
         ?.card?.itemCards

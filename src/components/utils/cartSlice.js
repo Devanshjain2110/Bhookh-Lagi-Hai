@@ -5,15 +5,17 @@ export const cartSlice = createSlice({
     
     name : 'cart',
     initialState : {
-        items : []
+        items : [],
     },
     reducers : {
         addItem : (state, action) => {
-            state.items.push(action.payload);
+            state.items.push(action.payload);          
         },
-        removeItem : (state, action) =>{
-            state.items.pop()
-        },
+        removeItem: (state, action) => {
+            state.items = state.items.filter((item) => {
+              return item?.info?.id !== action.payload;
+            });
+          },
         clearCart : (state) => {
             state.items = [];
         }

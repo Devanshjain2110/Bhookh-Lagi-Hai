@@ -23,7 +23,7 @@ export const RestaurantCard = ({
         }
         alt="logoRes"
       />
-      <h2 className="font-bold pt-2 pb-1 text-xl ">{name}</h2>
+      <h2 className="font-bold pt-2 pb-1 text-xl line-clamp-1 ">{name}</h2>
       <h3 className="mb-4 tracking-wide truncate">{cuisines.join(", ")}</h3>
       <div className="flex justify-between mb-2">
       <h4

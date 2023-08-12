@@ -28,8 +28,8 @@ const Header = () => {
             <li>About us</li>
           </Link>
           <Link className="px-5 hover:bg-white hover:text-black hover:rounded-xl h-10 pt-[6]
-          " to="/contact">
-            <li>Contact</li>
+          " to="/faq">
+            <li>FAQ</li>
           </Link>
           <Link className="px-5 hover:bg-white hover:text-black hover:rounded-xl h-10 pt-[6]
           " to="/cart" >
@@ -37,12 +37,10 @@ const Header = () => {
           </Link>
         </ul>
       </div>
-      <button className="mr-10 bg-orange-950 my-7 py-2 px-3 rounded-md hover:bg-white hover:text-black">
-        {isLogin ? (
-          <button onClick={() => setIsLogin(false)}>Logout</button>
-        ) : (
-          <button onClick={() => setIsLogin(true)}>Login</button>
-        )}
+      <button className="mr-10 bg-orange-950 my-6 py-2 px-3 rounded-md hover:bg-white hover:text-black">
+      <Link to='/login'>  Login</Link>
+      
+       
       </button>
     </div>
   );
