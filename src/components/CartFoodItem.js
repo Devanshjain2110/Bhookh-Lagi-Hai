@@ -14,7 +14,7 @@ export const CartFoodItem = ({
     dispatch(removeItem(item))
   };
  return (
-  <div className="flex  w-[790]">
+  <div className="flex w-[790]">
       <div className="m-4 flex p-4 w-[500px] text-slate-950 rounded-lg hover:bg-red-950 hover:text-white">
         <img
           className="rounded-lg w-[200]"

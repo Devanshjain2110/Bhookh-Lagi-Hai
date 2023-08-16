@@ -6,7 +6,7 @@ const Title = () => (
       <Link to="/">
       <img 
       data-testid="logo"
-      className="w-28 px-4 pt-2 ml-6"
+      className=" px-5 mt-2 w-20 sm:w-28 sm:mt-0 sm:px-4 pt-2 sm:ml-4 md:ml-6"
       alt="logo"
     src={Gen}
    

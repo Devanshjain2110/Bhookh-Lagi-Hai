@@ -35,7 +35,7 @@ export const Footer = () => {
           </button>
         </div>
       </div>
-      <div className="flex list-none mt-16">
+      <div className="hidden lg:flex list-none mt-16">
       <Link className="px-5 hover:text-orange-500 h-10 pt-[6]
           " to="/">
             <li>Home</li>
@@ -57,7 +57,7 @@ export const Footer = () => {
             <li data-testid="cart">Login</li>
           </Link>
       </div>
-      <div className="mt-11 mr-11">
+      <div className="hidden sm:block mt-11 mr-11">
         <div className="mb-3 font-bold">Subscribe to newsletter for deal updates</div>
         <input type="email" name="email" id="email" placeholder="Enter your email"  value={email} onChange={(e) =>{
           setEmail(e.target.value)
@@ -65,7 +65,7 @@ export const Footer = () => {
         <button className="bg-white text-black py-2 px-6 rounded-lg  ml-2 hover:bg-orange-500" onClick={() => setEmail("")}> Submit</button>
       </div>
     </div>
-    <div className="bg-zinc-900 h-15 flex text-zinc-500 justify-center max-w-full">
+    <div className="hidden md:flex bg-zinc-900 h-15  text-zinc-500 justify-center max-w-full">
       <div className="flex  ">
         <div className="flex mr-60 border-b-2 border-b-slate-600 hover:text-white hover:border-b-white">
       <p className="mt-[5]">BHOOKH LAGI HAI? </p>

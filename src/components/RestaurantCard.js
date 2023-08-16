@@ -14,7 +14,7 @@ export const RestaurantCard = ({
 
 }, ) => {
   return (
-    <div className="m-4 min-h-[370px] p-4 w-[300px] shadow-lg text-red-800 bg-white rounded-lg hover:shadow-orange-600 transition ease-in-out delay-50 hover:scale-105 duration-200 ">
+    <div className="m-4 min-h-[370px] shadow-orange-600 p-4 w-[300px] shadow-lg text-red-800 bg-white rounded-lg hover:shadow-orange-600  transition ease-in-out delay-50 hover:scale-105 duration-200 ">
       <img
         className="rounded-lg"
         src={

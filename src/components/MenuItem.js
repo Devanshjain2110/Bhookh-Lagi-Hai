@@ -13,7 +13,7 @@ export const MenuItem = ({ items }) => {
 
   return (
    
-    <div className="grid grid-flow-row grid-cols-3 gap-10 mt-7">
+    <div className="grid grid-flow-row xl:grid-cols-3 gap-10 mt-7">
       {items.map((item) => (
         <div
           key={item.card.info.id}

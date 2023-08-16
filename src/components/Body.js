@@ -62,12 +62,12 @@ export default function Body() {
   ) : (
     <>
     <QualityContainer onClicker={handleScroll}/>
-    <div className="bg-white text-black" >
-      <div className="ml-24  mr-[118] border-b-2 border-b-slate-300">
+    <div className="bg-white text-black " >
+      <div className=" pt-[60] xl:mr-[98] border-b-2 border-b-slate-300 xl:pt-0  xl:ml-28 xl:pb-6">
         <input
           type="text"
           data-testid = "search-btn"
-          className="border border-solid border-gray-400 py-2 pl-3 pr-16 rounded-2xl rounded-r-none bg-white"
+          className="border border-solid ml-6 border-gray-400 py-2 pl-3 pr-16 rounded-2xl rounded-r-none bg-white sm:ml-[170] md:ml-[90]  lg:ml-[40] xl:ml-0"
           value={searchInput}
           placeholder="Search Restaurants"
           onChange={(e) => setSearchInput(e.target.value)}
@@ -83,7 +83,7 @@ export default function Body() {
       <GoSearch />
         </button>
         <button
-          className="px-4 py-2 mr-2 ml-[78px] bg-white rounded-full hover:bg-orange-500 hover:text-white "
+          className="  px-4 py-2 mb-2  mr-2 ml-[78px]  bg-orange-500 text-white xl:bg-white rounded-full xl:hover:bg-orange-500 xl:hover:text-white xl:text-black  md:mb-0 sm:ml-[222] md:ml-[60] lg:ml-[390] xl:ml-[2] "
           onClick={() => {
             const filtered = restaurants.filter(
               (res) => res.info.avgRating > 4
@@ -94,7 +94,7 @@ export default function Body() {
           Top rated restaurants
         </button>
         <button
-          className="px-4 py-2 mx-2 bg-white rounded-full hover:bg-orange-500 hover:text-white"
+          className="hidden xl:block  px-4 py-2 mx-2 xl:ml-[480] xl:-mt-[55] bg-white rounded-full hover:bg-orange-500 hover:text-white"
           onClick={() => {
             let sortedList = [...restaurants]
             sortedList.sort(
@@ -106,7 +106,7 @@ export default function Body() {
           Nearest Restaurants
         </button>
         <button
-          className="px-4 py-2 mx-2 bg-white rounded-full hover:bg-orange-500 hover:text-white"
+          className="hidden xl:block px-4 py-2 mx-2 xl:ml-[650] xl:-mt-[41] bg-white rounded-full hover:bg-orange-500 hover:text-white"
           onClick={() => {
             let sortedList = [...restaurants]
             sortedList.sort(
@@ -118,7 +118,7 @@ export default function Body() {
           Cost : Low To High
         </button>
         <button
-          className="px-4 py-2 mx-2 bg-white rounded-full hover:bg-orange-500 hover:text-white"
+          className="hidden xl:block px-4 py-2 mx-2 xl:ml-[820] xl:-mt-[41] bg-white rounded-full hover:bg-orange-500 hover:text-white"
           onClick={() => {
             let sortedList = [...restaurants]
             sortedList.sort(
@@ -131,7 +131,7 @@ export default function Body() {
         </button>
         
         <button
-          className="px-4 py-2 mx-2 bg-white rounded-full hover:bg-orange-500 hover:text-white"
+          className="hidden xl:block px-4 py-2 mx-2 xl:ml-[1000] xl:-mt-[41] bg-white rounded-full hover:bg-orange-500 hover:text-white "
           onClick={() => {
             let sortedList = [...restaurants];
             sortedList.sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime);
@@ -141,7 +141,7 @@ export default function Body() {
           Delivery Time
         </button>
       </div>
-      <div id="res-list" className="flex flex-wrap mx-20 pb-3" data-testid="shimmer">
+      <div id="res-list" className="flex flex-wrap mx-2 sm:mx-36 md:mx-10 lg:mx-2 xl:mx-20 pb-3" data-testid="shimmer">
         {filteredRestaurants?.map((restaurant) => {
           return (
     

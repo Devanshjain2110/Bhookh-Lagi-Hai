@@ -47,7 +47,7 @@ export const Cart = () => {
 
   return (
     <div className="bg-white  min-h-[690]">
-      <div className="flex-col items-center bg-red-950 text-white min-h-[370] flex text-center py-28 px-60">
+      <div className="hidden xl:flex flex-col items-center bg-red-950 text-white min-h-[370] flex text-center py-28 px-60">
         <div className="text-5xl">Shopping Cart </div>
         <p className="mt-4">
           Here, you'll find all the delicious goodies you've handpicked for your
@@ -57,14 +57,14 @@ export const Cart = () => {
         </p>
       </div>
       <div className="flex min-h-[670]">
-        <div className="flex flex-col min-w-[1000] bg-slate-100">
+        <div className="hidden xl:flex flex-col min-w-[1000] bg-slate-100">
           <div className="flex justify-between mt-20 mx-52 font-mono text-black text-lg font-bold">
             <h1 className="mr-10">Products</h1>
           
             <h1>Total</h1>
           </div>
           {" "}
-          <div className="pl-40">
+          <div className="xl:pl-40">
           {cartItems.map((item) => (
             <div className="flex ">
             <CartFoodItem key={item.id} {...item} />  
@@ -73,7 +73,7 @@ export const Cart = () => {
           ))}
           </div>
         </div>
-        <div className="ml-14 text-slate-900">
+        <div className="w-[290] sm:w-full ml-4 xl:ml-14 text-slate-900">
           <h1 className="font-bold font-mono  mb-4 text-xl mt-24">
             Cart Totals - {cartItems.length}
           </h1>
@@ -81,7 +81,7 @@ export const Cart = () => {
             {" "}
             Do you have a coupon code?
           </h1>
-          <div className="flex mt-3 border-b-2 border-b-amber-400 pb-2" >
+          <div className="flex mt-3  border-b-2 border-b-amber-400 pb-2" >
             <input
               type="text"
               name=""
@@ -119,10 +119,10 @@ export const Cart = () => {
           </button>
           </div>
           <div className="flex flex-col">
-            <button className="py-3 px-1 w-[350] ml-2 mt-10  bg-red-950 text-white rounded-3xl font-bold hover:bg-orange-500">
+            <button className="py-3 px-1 w-[350] xl:ml-2 mt-10  bg-red-950 text-white rounded-3xl font-bold hover:bg-orange-500">
               Proceed to Checkout
             </button>
-            <button className="rounded-3xl border  border-gray-400 w-[350] ml-2 mt-2 py-2 px-1 font-bold hover:bg-red-950 hover:text-white">
+            <button className="rounded-3xl border  border-gray-400 w-[350] xl:ml-2 mt-2 py-2 px-1 font-bold hover:bg-red-950 hover:text-white">
               <Link to='/'>
               Continue Ordering 
               </Link>
