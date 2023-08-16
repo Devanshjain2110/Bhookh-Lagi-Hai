@@ -42,7 +42,7 @@ export const RestaurantMenu = () => {
           </h3>
         </div>
         
-        {Object.values(category).map((category) => (
+        {category && Object.values(category).map((category) => (
           <RestaurantCategory
             key={category?.card?.card.title}
             data={category.card.card}
