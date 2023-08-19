@@ -93,7 +93,7 @@ export const Cart = () => {
               id=""
             />
             <button>
-            <GoArrowRight className="mt-[6] mr-2" onClick={() => setInput("")} />
+            <GoArrowRight className="mt-[6] ml-[70]" onClick={() => setInput("")} />
             </button>
           </div>
           <div className="border-b-2 pb-7">
