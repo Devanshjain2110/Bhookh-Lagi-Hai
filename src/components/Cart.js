@@ -46,8 +46,8 @@ export const Cart = () => {
 
 
   return (
-    <div className="bg-white  min-h-[690]">
-      <div className="hidden xl:flex flex-col items-center bg-red-950 text-white min-h-[370] flex text-center py-28 px-60">
+    <div className="bg-white  min-h-[690] ">
+      <div className="hidden xl:flex flex-col items-center bg-red-950 text-white min-h-[370] text-center py-28 px-60">
         <div className="text-5xl">Shopping Cart </div>
         <p className="mt-4">
           Here, you'll find all the delicious goodies you've handpicked for your
@@ -57,11 +57,11 @@ export const Cart = () => {
         </p>
       </div>
       <div className="flex min-h-[670]">
-        <div className="hidden xl:flex flex-col min-w-[1000] bg-slate-100">
+        <div className="hidden xl:flex -ml-40 flex-col min-w-[850] bg-slate-100">
           <div className="flex justify-between mt-20 mx-52 font-mono text-black text-lg font-bold">
-            <h1 className="mr-10">Products</h1>
+            <h1 className="xl:ml-48">Products</h1>
           
-            <h1>Total</h1>
+            <h1 className=" xl:-mr-24 ">Total</h1>
           </div>
           {" "}
           <div className="xl:pl-40">
@@ -73,7 +73,7 @@ export const Cart = () => {
           ))}
           </div>
         </div>
-        <div className="w-[290] sm:w-full ml-4 xl:ml-14 text-slate-900">
+        <div className="w-[450] ml-4 xl:ml-28 xl:pr-12  text-slate-900">
           <h1 className="font-bold font-mono  mb-4 text-xl mt-24">
             Cart Totals - {cartItems.length}
           </h1>
@@ -93,7 +93,7 @@ export const Cart = () => {
               id=""
             />
             <button>
-            <GoArrowRight className="mt-[6] ml-[70]" onClick={() => setInput("")} />
+            <GoArrowRight className="mt-[6] ml-[20]" onClick={() => setInput("")} />
             </button>
           </div>
           <div className="border-b-2 pb-7">
