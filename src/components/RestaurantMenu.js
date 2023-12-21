@@ -11,7 +11,6 @@ export const RestaurantMenu = () => {
   const { id } = useParams();
   let { restaurantMenu, menu, category } = useRestaurantMenu(id);
 
-
   return menu != undefined && Object.keys(menu).length === 0 ? (
     <Shimmer />
   ) : (
