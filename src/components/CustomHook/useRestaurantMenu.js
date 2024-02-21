@@ -7,7 +7,7 @@ export const useRestaurantMenu = (id) => {
   const [menu, setMenu] = useState({});
   const [category, setCategory] = useState({});
   useEffect(() => {
-    getRestaurantInfo();
+      getRestaurantInfo();
    
   }, []);
 
@@ -19,16 +19,16 @@ export const useRestaurantMenu = (id) => {
     if (!data.ok)
       throw new Error("Something went wrong with fetching restaurants");
     const json = await data.json();
-    console.log(json)
    
-    setRestaurantMenu(json.data?.cards[0]?.card?.card?.info);   
+    setRestaurantMenu(json.data?.cards[2]?.card?.card?.info);   
+
     setMenu(
-      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
         ?.card?.itemCards
     );
 
     const cat =
-      await json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      await json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
         (c) =>
           c?.card?.card?.["@type"] ==
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
