@@ -21,19 +21,20 @@ export const useRestaurantMenu = (id) => {
     const json = await data.json();
    
     setRestaurantMenu(json.data?.cards[2]?.card?.card?.info);   
-
+console.log(json.data?.cards[2]?.card?.card?.info)
     setMenu(
-      json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
         ?.card?.itemCards
     );
 
     const cat =
-      await json?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      await json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
         (c) =>
           c?.card?.card?.["@type"] ==
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       );
     setCategory(cat);
+    console.log(cat)
   }
 
   return { restaurantMenu, menu, category };
