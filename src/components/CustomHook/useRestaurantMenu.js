@@ -13,9 +13,9 @@ export const useRestaurantMenu = (id) => {
 
   async function getRestaurantInfo() {
     const data = await fetch(
-      'https://corsproxy.org/?'+ encodeURIComponent(menu_url + id)
+      menu_url + id
     );
-  
+  console.log(data)
     if (!data.ok)
       throw new Error("Something went wrong with fetching restaurants");
     const json = await data.json();

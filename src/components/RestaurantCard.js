@@ -22,10 +22,8 @@ export const RestaurantCard = ({
         //   "https://corsproxy.io/?https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
         //   cloudinaryImageId
         // }
-        src={
-          "https://corsproxy.org/?https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
-          cloudinaryImageId
-        }
+        src={ "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+        cloudinaryImageId}
         alt="logoRes"
       />
       <h2 className="font-bold pt-2 pb-1 text-xl line-clamp-1 ">{name}</h2>
