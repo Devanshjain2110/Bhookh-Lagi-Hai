@@ -26,7 +26,7 @@ export const MenuItem = ({ items }) => {
                 item.card.info.imageId
               }
               alt=""
-              className="h-60 rounded-3xl "
+              className="h-60 rounded-3xl w-full object-cover"
             />
           </div>
           <div className="px-4 pt-4 ">
